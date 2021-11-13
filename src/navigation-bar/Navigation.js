@@ -29,7 +29,7 @@ export default class Navigation extends React.Component {
 	}
 
 	renderAuthNavigation = () => {
-		if(this.state.user == 'loading') 
+		if(this.state.user === 'loading') 
 			return <li className="mx-6"><Link to="/user"><img className="w-6 h-6 rounded-full" src={personimg}/></Link></li>;
 
 		if (this.state.user == null) 

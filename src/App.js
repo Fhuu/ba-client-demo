@@ -5,6 +5,8 @@ import {
 	Switch,
 	Route
 } from 'react-router-dom';
+
+import Navigation from './navigation-bar/Navigation';
 import React from 'react';
 import Task from './task/Index';
 import Auth from './auth/Index';
@@ -17,6 +19,7 @@ class App extends React.Component {
 			<div className="App">
 				<div>
 					<Router>
+						<Navigation />
 						<Switch>
 							<Route path="/task">
 								<Task />
@@ -27,27 +30,15 @@ class App extends React.Component {
 							<Route path="/another">
 								<p>another</p>
 							</Route>
-							<Route path="/login">
-								<Auth />
+							<Route path={'/login'}>
+								<Auth path="login" />
+							</Route>
+							<Route path={'/signup'}>
+								<Auth path="signup" />
 							</Route>
 						</Switch>
 					</Router>
 				</div>
-
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
-					<a
-						className="App-link"
-						href="https://reactjs.org"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Learn React
-					</a>
-				</header>
 
 			</div>
 		);

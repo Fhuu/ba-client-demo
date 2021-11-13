@@ -1,16 +1,36 @@
 import React from 'react';
-import {ButtonBuilder as Button} from '../../builder/Button';
+import Button from '../../builder/PositiveButtonBuilder';
 
 export default class SignUpForm extends React.Component{
 
+    clickHandler = async () => {
+        let username = document.getElementById('username').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let passwordConfirmation = document.getElementById('password-confirmation').value;
+
+        await fetch('/v1/user', {
+            method: 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify({
+                username : username,
+                email : email,
+                password : password,
+                password_confirmation : passwordConfirmation
+            })
+        })
+    }
+
     render() {
         return(
-            <form method="POST" action="/v1/user">
-                <input type="text" name="name" placeholder="Full name"/>
-                <input type="text" name="email" placeholder="E-Mail"/>
-                <input type="password" name="password" placeholder="Password"/>
-                <input type="password" name="confirm-password" placeholder="Confirm Password"/>
-                <Button>Sign Up</Button>
+            <form className="flex flex-col justify-center ">
+                <input type="text" id="username" placeholder="username"/>
+                <input type="text" id="email" placeholder="E-Mail"/>
+                <input type="password" id="password" placeholder="Password"/>
+                <input type="password" id="password-confirmation" placeholder="Confirm Password"/>
+                <Button message="Sign Up" callback={this.clickHandler}/>
             </form>
         );
     }
