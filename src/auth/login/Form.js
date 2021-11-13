@@ -10,7 +10,7 @@ export default class LoginForm extends React.Component{
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
 
-        await fetch('/v1/user/authn', {
+        let loginRequest = await fetch('/v1/user/authn', {
             method: 'POST',
             headers : {
                 'content-type' : 'application/json',
@@ -21,7 +21,7 @@ export default class LoginForm extends React.Component{
             })
         });
 
-        
+        if(loginRequest.status === 200) window.location.replace('/');        
 
     }
 

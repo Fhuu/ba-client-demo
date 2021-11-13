@@ -9,7 +9,7 @@ export default class SignUpForm extends React.Component{
         let password = document.getElementById('password').value;
         let passwordConfirmation = document.getElementById('password-confirmation').value;
 
-        await fetch('/v1/user', {
+        let createRequest = await fetch('/v1/user', {
             method: 'POST',
             headers : {
                 'content-type' : 'application/json'
@@ -20,7 +20,9 @@ export default class SignUpForm extends React.Component{
                 password : password,
                 password_confirmation : passwordConfirmation
             })
-        })
+        });
+        
+        if(createRequest.status === 200 || createRequest.status === 201) window.location.replace('/');
     }
 
     render() {
