@@ -29,12 +29,6 @@ class App extends React.Component {
 							<Route path="/task">
 								<Task />
 							</Route>
-							<Route path="/hello">
-								<p>Hello</p>
-							</Route>
-							<Route path="/another">
-								<p>another</p>
-							</Route>
 							<Route path='/login'>
 								<Auth path="login" />
 							</Route>
@@ -47,7 +41,6 @@ class App extends React.Component {
 						</Switch>
 					</Router>
 				</div>
-
 			</div>
 		);
 	}
