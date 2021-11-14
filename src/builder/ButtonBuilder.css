@@ -1,4 +1,10 @@
 #confirm-button {
 	background: #24755dff;
 	color: #ffffff;
+	font-weight: bolder;
+}
+
+#negative-button {
+	color: #ff3333;
+	font-weight: 700;
 }
