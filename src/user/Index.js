@@ -1,4 +1,5 @@
 import React from 'react';
+import LogoutForm from '../auth/logout/Form';
 import { checkAuth } from '../helper/Auth';
 
 export default class User extends React.Component{
@@ -14,7 +15,9 @@ export default class User extends React.Component{
 	}
 	
 	async componentDidMount () {
+		console.log('check')
 		let user = await checkAuth();
+		console.log(user);
 		this.setState({user : user}, () => {
 			console.log(this.state.user);
 		});
@@ -28,6 +31,9 @@ export default class User extends React.Component{
 				</div>
 				<div>
 					{this.state.user.email}
+				</div>
+				<div>
+					<LogoutForm />
 				</div>
 			</div>
 		);
