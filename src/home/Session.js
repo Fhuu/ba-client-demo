@@ -24,7 +24,10 @@ export default class Session extends React.Component {
 				this.setState({
 					timer : this.state.timer - 1
 				}, () => {
-					if(this.state.timer === 0) clearInterval(this.countdown);
+					if(this.state.timer === 0) {
+						this.completeTask();
+						clearInterval(this.countdown);
+					}
 				});
 			}, 1000);
 		});
@@ -49,6 +52,12 @@ export default class Session extends React.Component {
 		clearInterval(this.countdown);
 		this.setState({
 			buttontype : 'start'
+		});
+	}
+
+	completeTask = () => {
+		fetch('/v1/task/complete', {
+			method: 'GET'
 		});
 	}
 
