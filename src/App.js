@@ -5,11 +5,13 @@ import {
 	Switch,
 	Route
 } from 'react-router-dom';
+import React from 'react';
 
 import Navigation from './navigation-bar/Navigation';
-import React from 'react';
+import Home from './home/Index';
 import Task from './task/Index';
 import Auth from './auth/Index';
+import User from './user/Index';
 
 class App extends React.Component {
 	render() {
@@ -21,6 +23,9 @@ class App extends React.Component {
 					<Router>
 						<Navigation />
 						<Switch>
+							<Route path="/" exact>
+								<Home />
+							</Route>
 							<Route path="/task">
 								<Task />
 							</Route>
@@ -30,11 +35,14 @@ class App extends React.Component {
 							<Route path="/another">
 								<p>another</p>
 							</Route>
-							<Route path={'/login'}>
+							<Route path='/login'>
 								<Auth path="login" />
 							</Route>
-							<Route path={'/signup'}>
+							<Route path='/signup'>
 								<Auth path="signup" />
+							</Route>
+							<Route path='/user'> 
+								<User />
 							</Route>
 						</Switch>
 					</Router>
