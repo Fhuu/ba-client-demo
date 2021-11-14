@@ -5,6 +5,10 @@ import PositiveButton from '../../builder/PositiveButtonBuilder';
 
 export default class LoginForm extends React.Component{
 
+    keyHandler = (event) => {
+        console.log(event);
+    }
+
     clickHandler = async () => {
         
         let username = document.getElementById('username').value;
@@ -28,8 +32,8 @@ export default class LoginForm extends React.Component{
     render() {
         return(
             <form className="flex flex-col" method="POST" action="/v1/user/auth">
-                <input type="text" id="username" placeholder="Username"/>
-                <input type="password" id="password" placeholder="Password"/>
+                <input onKeyDownCapture={this.keyHandler} type="text" id="username" placeholder="Username"/>
+                <input onKeyDownCapture={this.keyHandler} type="password" id="password" placeholder="Password"/>
                 <PositiveButton message="Login" callback={this.clickHandler}/>
                 <Link to="/signup">Or create an account</Link>
             </form>
