@@ -25,7 +25,7 @@ export default class LoginForm extends React.Component{
             })
         });
 
-        if(loginRequest.status === 200) window.location.replace('/');        
+        if(loginRequest.status === 200) window.location.replace('/home');        
 
     }
 

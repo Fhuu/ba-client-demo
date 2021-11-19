@@ -22,7 +22,7 @@ export default class SignUpForm extends React.Component{
             })
         });
         
-        if(createRequest.status === 200 || createRequest.status === 201) window.location.replace('/');
+        if(createRequest.status === 200 || createRequest.status === 201) window.location.replace('/home');
     }
 
     render() {
