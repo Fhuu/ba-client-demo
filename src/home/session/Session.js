@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { checkAuth } from '../helper/Auth';
-import Button from '../builder/PositiveButtonBuilder';
-import StopButton from '../builder/NegativeButtonBuilder';
+import { checkAuth } from '../../helper/Auth';
+import Button from '../../builder/PositiveButtonBuilder';
+import StopButton from '../../builder/NegativeButtonBuilder';
 
 
 export default class Session extends React.Component {
@@ -41,15 +41,6 @@ export default class Session extends React.Component {
 		let user = await checkAuth();
 		if (user) {
 			this.startCountdown();
-			fetch('/v1/task', {
-				method: 'POST',
-				headers : {
-					'content-type' : 'application/json'
-				},
-				body : JSON.stringify({
-					title : document.getElementById('task-title').value
-				})
-			});
 		}
 
 	}
@@ -68,12 +59,6 @@ export default class Session extends React.Component {
 			work : true,
 			timer : this.state.workcircle * 60
 		})
-	}
-
-	completeTask = () => {
-		fetch('/v1/task/complete', {
-			method: 'GET'
-		});
 	}
 
 	changeSessionTime = () => {
@@ -117,7 +102,6 @@ export default class Session extends React.Component {
 			<div className="flex flex-col">
 				{this.state.buttontype !== 'start' ? this.state.work ? <span>Time to concenctrate</span> : <span>Take it easy for now</span> : <span className="invisible">invisible</span>}
 				<span>{this.renderMinutes()} : {this.renderSeconds()}</span>
-				<input type="text" placeholder="Title" id="task-title" />
 				{this.button()}
 			</div>
 		);
