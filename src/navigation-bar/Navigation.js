@@ -43,7 +43,7 @@ export default class Navigation extends React.Component {
 			<div className="flex justify-between items-end py-4">
 				<div></div>
 				<ul className="flex justify-around">
-					<li className="mx-6"><Link to="/">Home</Link></li>
+					<li className="mx-6"><Link to="/home">Home</Link></li>
 					<li className="mx-6"><Link to="/task">Task</Link></li>
 					{this.renderAuthNavigation()}
 				</ul>
