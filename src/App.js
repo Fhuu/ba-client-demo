@@ -9,7 +9,7 @@ import React from 'react';
 
 import Navigation from './navigation-bar/Navigation';
 import Home from './home/Index';
-import Task from './task/Index';
+import TaskPage from './task/Index';
 import Auth from './auth/Index';
 import User from './user/Index';
 
@@ -23,13 +23,13 @@ class App extends React.Component {
 					<Router>
 						<Navigation />
 						<Switch>
-							<Route path="/" exact>
+							<Route path="/home" exact>
 								<Home />
 							</Route>
 							<Route path="/task">
-								<Task />
+								<TaskPage />
 							</Route>
-							<Route path='/login'>
+							<Route path={['/login', '/']} exact>
 								<Auth path="login" />
 							</Route>
 							<Route path='/signup'>
