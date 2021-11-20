@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import personimg from '../assets/images/person-placeholder.jfif' ;
+import personimg from '../../../assets/images/person-placeholder.jfif' ;
 
 export default class Navigation extends React.Component {
 	constructor(props) {

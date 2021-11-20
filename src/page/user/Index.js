@@ -1,6 +1,6 @@
 import React from 'react';
-import LogoutForm from '../auth/logout/Form';
-import { checkAuth } from '../helper/Auth';
+import LogoutForm from '../../component/Auth/Logout/Form';
+import { checkAuth } from '../../helper/Auth';
 
 export default class User extends React.Component{
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../builder/PositiveButtonBuilder';
+import Button from '../../../builder/PositiveButtonBuilder';
 
 export default class SignUpForm extends React.Component{
 

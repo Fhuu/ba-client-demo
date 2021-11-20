@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import PositiveButton from '../../builder/PositiveButtonBuilder';
+import PositiveButton from '../../../builder/PositiveButtonBuilder';
 
 export default class LoginForm extends React.Component{
 

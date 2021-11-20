@@ -1,5 +1,5 @@
 import react from 'react';
-import NegativeButton from '../../builder/NegativeButtonBuilder';
+import NegativeButton from '../../../builder/NegativeButtonBuilder';
 
 export default class LogoutForm extends react.Component {
 

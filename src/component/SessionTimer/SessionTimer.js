@@ -4,10 +4,10 @@ import { checkAuth } from '../../helper/Auth';
 import Button from '../../builder/PositiveButtonBuilder';
 import StopButton from '../../builder/NegativeButtonBuilder';
 
-import '../index.css';
+import './SessionTimer.css';
 
 
-export default class Session extends React.Component {
+export default class SessionTimer extends React.Component {
 
 	constructor(props) {
 		super(props);

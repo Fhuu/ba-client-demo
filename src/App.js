@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 
-import Navigation from './navigation-bar/Navigation';
-import Home from './home/Index';
-import TaskPage from './task/Index';
-import Auth from './auth/Index';
-import User from './user/Index';
+import Navigation from './page/partial/navigation-bar/Navigation';
+import Home from './page/home/Index';
+import TaskPage from './component/TaskList/TaskList';
+import User from './page/user/Index';
+import Auth from './page/auth/Index';
 
 class App extends React.Component {
 	render() {

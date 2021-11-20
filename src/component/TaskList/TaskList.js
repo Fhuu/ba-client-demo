@@ -1,6 +1,6 @@
 import React from 'react';
-import { checkAuth } from '../helper/Auth';
-import Task from '../builder/Task';
+import { checkAuth } from '../../helper/Auth';
+import Task from '../../builder/Task';
 
 export default class TaskPage extends React.Component {
 
@@ -39,7 +39,7 @@ export default class TaskPage extends React.Component {
 	renderTasks = () => {
 		return(
 			<div className="flex justify-center items-center">
-				<ul className="flex flex-col justify-center items-start">
+				<ul className="flex flex-col justify-center items-start w-full">
 					{
 						this.state.tasks.map(task => {
 							return (<Task key={task._id} task={task}></Task>)

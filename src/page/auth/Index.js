@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginForm from './login/Form';
-import SignUpForm from './signup/Form';
+import LoginForm from '../../component/Auth/Login/Form';
+import SignUpForm from '../../component/Auth/Signup/Form';
 
 export default class Auth extends React.Component {
 

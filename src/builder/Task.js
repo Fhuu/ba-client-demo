@@ -4,6 +4,20 @@ import './Task.css';
 
 export default class Task extends React.Component {
 
+	deleteTask = async () => {
+		let deleteRequest = await fetch('/v1/task', {
+			method: 'DELETE',
+			headers : {
+				'content-type' : 'application/json'
+			},
+			body : JSON.stringify({
+				_id : this.props.task._id
+			})
+		});
+
+		if(deleteRequest.status === 200) this.props.refreshTasks();
+	}
+
 	changeCompletion = async () => {
 		let completeRequest = await fetch(`/v1/task/complete/${this.props.task._id}`);
 
@@ -29,7 +43,7 @@ export default class Task extends React.Component {
 					}
 					<label id="task-label">{this.props.task.title}</label>
 					<div className="delete-buttons" id={`delete-button-${this.props.task._id}`}>
-						<NegativeButton message="delete"></NegativeButton>
+						<NegativeButton message="delete" callback={this.deleteTask}></NegativeButton>
 					</div>
 				</section>
 			</li>
