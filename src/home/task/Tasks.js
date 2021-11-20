@@ -5,6 +5,8 @@ import { checkAuth } from '../../helper/Auth';
 import { parseDate } from '../../helper/DateParser';
 import Task from '../../builder/Task';
 
+import '../index.css';
+
 export default class Tasks extends React.Component {
 
 	constructor(props) {
@@ -70,8 +72,9 @@ export default class Tasks extends React.Component {
 	taskForm = () => {
 		return(
 			<>
-				<form className="flex flex-col justify-center">
-					<input type="text" id="task-title" placeholder="Title" className="text-center" />
+				<form className="container items-center">
+					<div></div>
+					<input type="text" id="task-title" placeholder="Title" className="text-center mb-8" />
 					<PositiveButton message="create task" callback={this.submitFormHandler}></PositiveButton>
 				</form>
 			</>
@@ -82,7 +85,10 @@ export default class Tasks extends React.Component {
 		return(
 			<>
 				{this.taskForm()}
-				{this.renderTaskList()}
+				<div className="py-4">
+					<h2 className="text-lg font-bold">Task Today</h2>
+					{this.renderTaskList()}
+				</div>
 			</>
 		);
 	}

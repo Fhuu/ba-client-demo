@@ -4,6 +4,8 @@ import { checkAuth } from '../../helper/Auth';
 import Button from '../../builder/PositiveButtonBuilder';
 import StopButton from '../../builder/NegativeButtonBuilder';
 
+import '../index.css';
+
 
 export default class Session extends React.Component {
 
@@ -12,7 +14,7 @@ export default class Session extends React.Component {
 
 		this.state = {
 			work : true,
-			timer : 1,
+			timer : 25 * 60,
 			buttontype : 'start',
 			workcircle : 25,
 			restcircle : 5
@@ -91,18 +93,20 @@ export default class Session extends React.Component {
 		if(this.state.buttontype === 'start') return <Button message="Start timer" callback={this.startSession} />;
 		return (
 			<>
-				<Button message="Pause Timer" callback={this.pauseSession}></Button>
 				<StopButton message="Stop Timer" callback={this.stopSession}></StopButton>
+				<Button message="Pause Timer" callback={this.pauseSession}></Button>
 			</>
 		);
 	}
 	
 	render() {
 		return(
-			<div className="flex flex-col">
-				{this.state.buttontype !== 'start' ? this.state.work ? <span>Time to concenctrate</span> : <span>Take it easy for now</span> : <span className="invisible">invisible</span>}
-				<span>{this.renderMinutes()} : {this.renderSeconds()}</span>
-				{this.button()}
+			<div className="flex flex-col container">
+				{this.state.buttontype !== 'start' ? this.state.work ? <span id="work-time">Time to concenctrate</span> : <span id="pause-time">Take it easy for now</span> : <span className="invisible">invisible</span>}
+				<span className="py-8 text-white">{this.renderMinutes()} : {this.renderSeconds()}</span>
+				<div className="flex justify-around items-center ">
+					{this.button()}
+				</div>
 			</div>
 		);
 	}
