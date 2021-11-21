@@ -45,6 +45,7 @@ export default class Navigation extends React.Component {
 				<ul className="flex justify-around">
 					<li className="mx-6"><Link to="/home">Home</Link></li>
 					<li className="mx-6"><Link to="/task">Task</Link></li>
+					<li className="mx-6"><Link to="/note">Note</Link></li>
 					{this.renderAuthNavigation()}
 				</ul>
 			</div>

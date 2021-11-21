@@ -16,8 +16,9 @@ export default class SessionTimer extends React.Component {
 			work : true,
 			timer : 25 * 60,
 			buttontype : 'start',
-			workcircle : 25,
-			restcircle : 5
+			workCycle : 25,
+			restCycle : 5,
+			cycleCount : 1,
 		}
 
 		this.countdown = null;
@@ -59,7 +60,7 @@ export default class SessionTimer extends React.Component {
 		this.setState({
 			buttontype : 'start',
 			work : true,
-			timer : this.state.workcircle * 60
+			timer : this.state.workCycle * 60
 		})
 	}
 
@@ -69,11 +70,11 @@ export default class SessionTimer extends React.Component {
 		}, () => {
 			
 			if(this.state.work) {
-				this.setState({timer : this.state.workcircle * 60});
+				this.setState({timer : this.state.workCycle * 60, cycleCount : this.state.cycleCount + 1});
 				return;
 			}
 
-			this.setState({timer: this.state.restcircle *  60});
+			this.setState({timer: this.state.restCycle *  60});
 		});
 	}
 
@@ -102,7 +103,7 @@ export default class SessionTimer extends React.Component {
 	render() {
 		return(
 			<div className="flex flex-col container">
-				{this.state.buttontype !== 'start' ? this.state.work ? <span id="work-time">Time to concenctrate</span> : <span id="pause-time">Take it easy for now</span> : <span className="invisible">invisible</span>}
+				{this.state.buttontype !== 'start' ? this.state.work ? <span id="work-time">Time to concenctrate [{this.state.cycleCount}]</span> : <span id="pause-time">Take it easy for now [{this.state.cycleCount}]</span> : <span className="invisible">invisible</span>}
 				<span className="py-8 text-white">{this.renderMinutes()} : {this.renderSeconds()}</span>
 				<div className="flex justify-around items-center ">
 					{this.button()}

@@ -11,6 +11,7 @@ import Home from './page/home/Index';
 import TaskPage from './component/TaskList/TaskList';
 import User from './page/user/Index';
 import Auth from './page/auth/Index';
+import Note from './page/note/Index';
 
 class App extends React.Component {
 	render() {
@@ -36,6 +37,9 @@ class App extends React.Component {
 							</Route>
 							<Route path='/user'> 
 								<User />
+							</Route>
+							<Route path='/note'>
+								<Note />
 							</Route>
 						</Switch>
 					</Router>
