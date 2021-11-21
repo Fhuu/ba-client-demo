@@ -9,9 +9,7 @@ export default class TaskForm extends React.Component {
 
 	submitFormHandler = async () => {
 
-		let user = await checkAuth();
-		
-		if(user) {
+		if(this.props.user) {
 			let title = document.getElementById('task-title').value;
 			
 			let taskRequest = await fetch('/v1/task', {
@@ -24,7 +22,10 @@ export default class TaskForm extends React.Component {
 				})
 			})
 			
-			if(taskRequest.status === 200 || taskRequest.status === 201) this.getTasks();
+			if(taskRequest.status === 200 || taskRequest.status === 201) {
+				this.props.refreshTasks();
+				document.getElementById('task-title').value = '';
+			}
 		}
 	}
 
@@ -33,7 +34,7 @@ export default class TaskForm extends React.Component {
 			<>
 				<form className="container items-center">
 					<div></div>
-					<input type="text" id="task-title" placeholder="Title" className="text-center mb-8" />
+					<input type="text" id="task-title" placeholder="Title" className="text-center mb-8 w-full" />
 					<PositiveButton message="create task" callback={this.submitFormHandler}></PositiveButton>
 				</form>
 			</>

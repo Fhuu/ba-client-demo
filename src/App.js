@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
 	BrowserRouter as Router,
@@ -7,7 +6,7 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 
-import Navigation from './page/partial/navigation-bar/Navigation';
+import Navigation from './page/partial/NavigationBar/Navigation';
 import Home from './page/home/Index';
 import TaskPage from './component/TaskList/TaskList';
 import User from './page/user/Index';

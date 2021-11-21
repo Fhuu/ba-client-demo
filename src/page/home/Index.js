@@ -1,20 +1,23 @@
 import react from 'react';
 import SessionTimer from '../../component/SessionTimer/SessionTimer';
 import TaskPage from '../../component/TaskList/TaskList';
-import TaskForm from '../../component/TaskForm/TaskForm';
+import HomeTask from '../partial/HomeTask/HomeTask';
 
 
 export default class Home extends react.Component {
 
+	MusicPlayer = () => {
+		return(
+			<iframe className="w-full h-full" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+		);
+	}
+	
 	render() {
 		return(
 			<div>
+				<this.MusicPlayer />
 				<SessionTimer />
-				<TaskForm />
-				<div className="py-4">
-					<h2 className="text-lg font-bold">Task Today</h2>
-					<TaskPage />
-				</div>
+				<HomeTask />
 			</div>
 		);
 	}

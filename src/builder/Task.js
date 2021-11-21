@@ -35,7 +35,7 @@ export default class Task extends React.Component {
 	render() {
 		return(
 			<li key={this.props.task._id} className="flex items-center w-full">
-				<section id="task-container" onMouseEnter={this.activateDelete} onMouseLeave={this.deactiveDelete}>
+				<section id="task-container" onMouseOver={this.activateDelete} onMouseOut={this.deactiveDelete}>
 					{
 						this.props.task.completed ? 
 						<input type="checkbox" className="mr-4" checked onChange={this.changeCompletion}/> :
