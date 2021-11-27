@@ -13,13 +13,7 @@ import User from './page/user/Index';
 import Auth from './page/auth/Index';
 import Note from './page/note/Index';
 
-import { initiate } from './helper/database/database';
-
 class App extends React.Component {
-
-	componentDidMount() {
-		initiate();
-	}
 
 	render() {
 
