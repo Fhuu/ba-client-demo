@@ -12,6 +12,7 @@ import TaskPage from './component/TaskList/TaskList';
 import User from './page/user/Index';
 import Auth from './page/auth/Index';
 import Note from './page/note/Index';
+import NoteEditor from './component/Note/NoteEditor';
 
 class App extends React.Component {
 
@@ -39,8 +40,11 @@ class App extends React.Component {
 							<Route path='/user'> 
 								<User />
 							</Route>
-							<Route path='/note'>
+							<Route path='/note' exact>
 								<Note />
+							</Route>
+							<Route path='/note/:noteID'>
+								<NoteEditor />
 							</Route>
 						</Switch>
 					</Router>
