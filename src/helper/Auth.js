@@ -1,4 +1,5 @@
 async function checkAuth () {
+	console.log('called');
 	let authorization = await fetch('/v1/user', {method: 'GET'});
 	switch(authorization.status) {
 		case 401 : 
@@ -11,6 +12,4 @@ async function checkAuth () {
 	}
 }
 
-module.exports = {
-	checkAuth
-};
+export default checkAuth;
