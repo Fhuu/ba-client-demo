@@ -29,7 +29,7 @@ class App extends React.Component {
 								<Home />
 							</Route>
 							<Route path="/task">
-								<TaskPage />
+								{/* <TaskPage /> */}
 							</Route>
 							<Route path={['/login', '/']} exact>
 								<Auth path="login" />
