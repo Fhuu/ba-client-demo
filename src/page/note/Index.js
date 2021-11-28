@@ -1,93 +1,76 @@
 import React from 'react';
-import ReactQuill from 'react-quill';
-import { v4 } from 'uuid';
-import './quill-editor.css';
-import { addOrUpdate, get } from '../../helper/database/database';
 
-export default class Note extends React.Component {
+import { v4 } from 'uuid';
+
+import Note from '../../component/Note/NoteListElement';
+import { getAll } from '../../helper/database/database';
+
+import './quill-editor.css';
+
+import { Link } from 'react-router-dom';
+
+class NoteIndex extends React.Component {
+
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			notes : null,
 			dataReady : false,
-			title : null,
-			note : null,
 		};
+	}
 
-		
+	updateNotes = (data) => {
+		this.setState({
+			notes : data,
+			dataReady : true,
+		}, () => {
+			console.log(this.state.notes);
+		})
 	}
 
 	componentDidMount() {
-		
-		get('Notes', 'test_id_inexist_1', document.getElementById('message'), (data) => {
-			if(data) 
-				return this.setState({
-					title : data.title,
-					note : data.content,
-					dataReady : true
-				});
-			
-			this.setState({
-				title : '',
-				note: '',
-				dataReady : true
-			});
-		});
-
+		getAll('Notes', document.getElementById('db-message'), this.updateNotes);
 	}
 
-	titleChangeHandler = () => {
-		let title = document.getElementById('title').value;
-		this.setState({
-			title : title,
-		}, () => {
 
-			let noteObj = {
-				'id' : 'test_id_inexist_1',
-				'title' : title,
-				'content' : this.state.note
-			};
-
-			addOrUpdate('Notes', noteObj ,document.getElementById('message'));
-
-		})
+	renderNoteList = () => {
+		if(!this.state.dataReady) return <span>Loading</span>
+		
+		return ( 
+			<div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
+				{	
+					this.state.notes.reverse().map(note => {
+						return (
+							<Link style={{minHeight: '16rem'}} to={`/note/${note.id}`}><Note note={note} /></Link>
+						)
+					})
+				}
+			</div>
+		);
 	}
 	
-	contentChangeHandler = (text) => {
-		this.setState({
-			note : text
-		}, () => {
-			
-			let noteObj = {
-				'id' : 'test_id_inexist_1',
-				'title' : this.state.title,
-				'content' : text
-			};
-
-			addOrUpdate('Notes', noteObj, document.getElementById('message'));
-			
-		}); 
-	}
-
-	printNote = () => {
-		if(!this.state.dataReady) return <p>Loading</p>;
-		
+	addButton = () => {
 		return (
-			<>
-				<input type="text" id="title" className="w-full bg-white p-2 text-center outline-none text-black" onChange={this.titleChangeHandler} value={this.state.title}/>
-				<ReactQuill value={this.state.note} onChange={this.contentChangeHandler} />
-			</>
+			<Link className="mb-2 flex justify-center items-center" to={`/note/${v4()}`}>
+				<svg xmlns="http://www.w3.org/2000/svg" width="56" height="28" fill="#2229" className="bi bi-plus-circle bg-white p-1 rounded-full" viewBox="0 0 16 16">
+					<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+					<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+				</svg>
+			</Link>
 		);
-
 	}
-
+	
 	render() {
 		return(
 			<>
-				{this.printNote()}
-				<div id="message"></div>
+				{this.addButton()}
+				{this.renderNoteList()}
+				<span id="db-message"></span>
 			</>
 		);
 	}
 }
+
+export default NoteIndex;
