@@ -92,6 +92,40 @@ module.exports = {
 		IDBOpenRequest.onerror = function(error) {
 			console.log(`error ${error}`)
 		};
+	},
+
+	getAll : (storeName, messageholder, callback) => {
+		let IDBOpenRequest = window.indexedDB.open('ba');
+
+		IDBOpenRequest.onsuccess = function(event) {
+			
+			try {
+				let transaction = event.target.result.transaction(storeName, 'readonly');
+	
+				let store = transaction.objectStore(storeName);
+	
+				let request = store.getAll();
+	
+				request.onsuccess = function(event) {
+					callback(request.result);
+					if(request.result)
+						messageholder.innerHTML = '<span>Data fetched from the database</span>';
+					else 
+						messageholder.innerHTML = '<span>New Note created</span>'
+				}
+	
+				request.onerror = function(error) {
+					messageholder.innerHTML = '<span>Error when fetching data to database</span>';
+				}
+			} catch (error) {
+				createObjectStore(storeName);
+			}
+
+		}
+		
+		IDBOpenRequest.onerror = function(error) {
+			console.log(`error ${error}`)
+		};
 	}
 }
 
