@@ -2,7 +2,7 @@ import React from 'react';
 import TaskList from '../../../component/TaskList/TaskList';
 import TaskForm from '../../../component/TaskForm/TaskForm';
 
-import { checkAuth } from '../../../helper/Auth';
+import checkAuth from '../../../helper/Auth';
 import { parseDate } from '../../../helper/DateParser';
 
 export default class HomeTask extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { checkAuth } from '../../helper/Auth';
+import checkAuth from '../../helper/Auth';
 import Button from '../../builder/PositiveButtonBuilder';
 import StopButton from '../../builder/NegativeButtonBuilder';
 

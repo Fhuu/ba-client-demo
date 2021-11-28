@@ -43,7 +43,7 @@ class NoteIndex extends React.Component {
 				{	
 					this.state.notes.reverse().map(note => {
 						return (
-							<Link style={{minHeight: '16rem'}} to={`/note/${note.id}`}><Note note={note} /></Link>
+							<Link key={note.id} style={{minHeight: '16rem'}} to={`/note/${note.id}`}><Note note={note} /></Link>
 						)
 					})
 				}
